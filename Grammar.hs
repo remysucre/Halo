@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -w #-}
-module Main where
+module Grammar where
 import Control.Applicative(Applicative(..))
 import Control.Monad (ap)
 import Data.Char
@@ -246,7 +246,7 @@ lexVar cs =
    case span isAlpha cs of
       (var,rest)   -> TokenVar var : lexer rest
 
-main = getContents >>= print . sentence . lexer
+--main = getContents >>= print . sentence . lexer
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "<command-line>" #-}
