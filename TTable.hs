@@ -1,3 +1,4 @@
+import System.Environment
 import Grammar
 
 type TTable = [Row]
@@ -38,4 +39,8 @@ prettyPrint :: TTable -> String
 prettyPrint tt = unlines $ map (\r -> printR r ++ "\n") tt
   where printR r = concat $ map (\(s, b) -> show s ++ " = " ++ show b ++ " ") r
 
-main = putStr $ prettyPrint $ truthTable (Neg (Conj (Var "a") (Neg (Var "b")))) -- [("a", True), ("b", False), ("c", False)]
+main = do 
+  [f] <- getArgs
+  s <- readFile f
+  let sen = sentence $ lexer $ s
+  putStr $ prettyPrint $ truthTable sen
